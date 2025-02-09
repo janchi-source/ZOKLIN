@@ -1,0 +1,10 @@
+• Create a basic template for the website
+• Create a home page
+• Create an about page
+• Create a contact page
+• Create a footer
+• Create a navigation bar
+• Create a content section
+• Create a footer section
+• Create a navigation bar section
+• Create a content section
