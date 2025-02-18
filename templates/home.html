@@ -1,6 +1,79 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<h1>Welcome to the Home Page</h1>
-<p>This is the home page content.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p></p>
+                <h1>Cleaning<br>services</h1>
+                <button class="btn-green">Contact us</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="search-bar">
+        <div class="search-container">
+            <select>
+                <option>All</option>
+            </select>
+            <input type="text" placeholder="I want to clean..." class="search-input">
+            <select>
+                <option>Bratislava</option>
+                <option>Pezinok</option>
+            </select>
+            <select>
+                <option>Eur 500 - 1000</option>
+            </select>
+            <button class="search-btn">🔍</button>
+        </div>
+    </div>
+
+    <section class="popular-searches">
+        <h2>Services</h2>
+        <div class="tags">
+            <span class="tag">House cleaning</span>
+            <span class="tag">Office cleaning</span>
+            <span class="tag">Event services</span>
+            <span class="tag">Clothing</span>
+            <span class="tag">Garden services</span>
+            <span class="tag">Ginger cleaning</span>
+            <span class="tag">Car cleaning</span>
+            <span class="tag">Mental Cleaning</span>
+        </div>
+
+        <div class="categories">
+            <div class="category houses">
+                <img src="../static/img/house.jpg" alt="Real Estate">
+                <h3>Houses</h3>
+            </div>
+            <div class="category garden">
+                <img src="../static/img/garden.jpg" alt="Beauty & Health">
+                <h3>Gardens</h3>
+            </div>
+            <div class="category office">
+                <img src="../static/img/office.jpg" alt="All for Home">
+                <h3>Offices</h3>
+            </div>
+            <div class="category cars">
+                <img src="../static/img/car.jpg" alt="Cars & Motors">
+                <h3>Cars</h3>
+            </div>
+            <div class="category mental">
+                <img src="../static/img/brain.jpg" alt="Pets & Staff">
+                <h3>Menatal</h3>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
 {% endblock %}
