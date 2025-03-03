@@ -1,0 +1,42 @@
+{% extends "_articels.html" %}
+
+{% block title %}Article Page{% endblock %}
+
+{% block content %}
+<article class="article">
+    <h1 class="article-title">Article or Post Title</h1>
+    <p class="subheading">Subheading that sets up context, shares more info about the author, or generally gets people psyched to keep reading.</p>
+    <img src="static/img/ginger-mental.png" alt="Decorative image" class="article-image">
+
+    <section class="article-body">
+        <p>Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look.</p>
+
+        <p>Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza essentials exquisite perfect helvetica midi initiative...</p>
+
+        <div class="image-grid">
+            <img src="static/img/ginger-mental-problem.png" alt="Image 1" class="grid-image">
+            <img src="static/img/ginger-mental-curing.png" alt="Image 2" class="grid-image">
+        </div>
+
+        <p>Exquisite sophisticated iconic cutting-edge laborum deserunt adidas ababa esse minim...</p>
+    </section>
+
+    <section class="related-posts">
+        <h2>Related Articles or Posts</h2>
+        <div class="related-grid">
+            <div class="related-item">
+                <img src="related1.jpg" alt="Related post 1" class="related-image">
+                <p>Title<br>Author</p>
+            </div>
+            <div class="related-item">
+                <img src="related2.jpg" alt="Related post 2" class="related-image">
+                <p>Title<br>Author</p>
+            </div>
+            <div class="related-item">
+                <img src="related3.jpg" alt="Related post 3" class="related-image">
+                <p>Title<br>Author</p>
+            </div>
+        </div>
+    </section>
+</article>
+{% endblock %}
