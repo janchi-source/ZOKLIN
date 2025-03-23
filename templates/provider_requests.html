@@ -1,0 +1,206 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+
+<div class="auth-container requests-container">
+    <h2>Customer Requests</h2>
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    {% if bookings %}
+        <div class="requests-list">
+            {% for booking in bookings %}
+            <div class="request-card">
+                <div class="request-header">
+                    <h3>{{ booking.service_type.replace('_', ' ').title() }}</h3>
+                    <span class="request-status {{ booking.status }}">{{ booking.status.title() }}</span>
+                </div>
+                
+                <div class="request-details">
+                    <div class="customer-info">
+                        <h4>Customer Information</h4>
+                        <p><strong>Name:</strong> {{ booking.customer.username }}</p>
+                        <p><strong>Email:</strong> {{ booking.customer.email }}</p>
+                    </div>
+                    
+                    <div class="booking-info">
+                        <h4>Booking Details</h4>
+                        <p><strong>Date:</strong> {{ booking.booking_date.strftime('%Y-%m-%d %H:%M') }}</p>
+                        <p><strong>Price:</strong> €{{ booking.price }}</p>
+                        {% if booking.notes %}
+                            <p><strong>Notes:</strong> {{ booking.notes }}</p>
+                        {% endif %}
+                        <p><strong>Requested:</strong> {{ booking.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+                    </div>
+                </div>
+                
+                {% if booking.status == 'pending' %}
+                <div class="request-actions">
+                    <button class="btn-action confirm" onclick="updateStatus({{ booking.id }}, 'confirmed')">Confirm</button>
+                    <button class="btn-action cancel" onclick="updateStatus({{ booking.id }}, 'cancelled')">Cancel</button>
+                </div>
+                {% elif booking.status == 'confirmed' %}
+                <div class="request-actions">
+                    <button class="btn-action complete" onclick="updateStatus({{ booking.id }}, 'completed')">Mark as Completed</button>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-requests">You don't have any customer requests yet.</p>
+    {% endif %}
+</div>
+
+<style>
+.requests-container {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.request-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.request-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.request-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.request-status {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.request-status.pending {
+    background-color: #ffd700;
+    color: #000;
+}
+
+.request-status.confirmed {
+    background-color: #28a745;
+    color: white;
+}
+
+.request-status.completed {
+    background-color: #6c757d;
+    color: white;
+}
+
+.request-status.cancelled {
+    background-color: #dc3545;
+    color: white;
+}
+
+.request-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 1rem 0;
+}
+
+.customer-info, .booking-info {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.customer-info h4, .booking-info h4 {
+    margin-top: 0;
+    color: #495057;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.request-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.btn-action {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-action.confirm {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-action.cancel {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-action.complete {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-action:hover {
+    opacity: 0.9;
+}
+
+.no-requests {
+    text-align: center;
+    color: #6c757d;
+    margin: 2rem 0;
+}
+</style>
+
+<script>
+function updateStatus(bookingId, status) {
+    fetch(`/booking/${bookingId}/status`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: status })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
+        } else {
+            location.reload();
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while updating the booking status.');
+    });
+}
+</script>
+{% endblock %} 

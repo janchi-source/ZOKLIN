@@ -1,0 +1,77 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+
+<div class="service-hero" style="background-image: url('{{ url_for('static', filename='img/house.jpg') }}')">
+    <div class="service-hero-content">
+        <h1>House Cleaning Services</h1>
+        <p>Professional cleaning services tailored to your home's unique needs. We bring sparkle to every corner of your house.</p>
+    </div>
+</div>
+
+<div class="service-content">
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>Deep Cleaning</h3>
+            <p>Thorough cleaning of all surfaces, including hard-to-reach areas and detailed attention to bathrooms and kitchen.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Regular Maintenance</h3>
+            <p>Scheduled cleaning services to keep your home consistently clean and fresh throughout the year.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Eco-Friendly Options</h3>
+            <p>Green cleaning solutions that are safe for your family, pets, and the environment.</p>
+        </div>
+    </div>
+</div>
+
+<div class="pricing-section">
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <h3>Basic Clean</h3>
+            <div class="price">€80<span>/visit</span></div>
+            <p>Perfect for regular maintenance</p>
+            <ul>
+                <li>2-hour service</li>
+                <li>Basic dusting and vacuuming</li>
+                <li>Bathroom cleaning</li>
+                <li>Kitchen cleaning</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+        <div class="pricing-card">
+            <h3>Deep Clean</h3>
+            <div class="price">€150<span>/visit</span></div>
+            <p>Comprehensive cleaning service</p>
+            <ul>
+                <li>4-hour service</li>
+                <li>Deep cleaning of all rooms</li>
+                <li>Window cleaning</li>
+                <li>Appliance cleaning</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+        <div class="pricing-card">
+            <h3>Premium Package</h3>
+            <div class="price">€250<span>/visit</span></div>
+            <p>The ultimate cleaning experience</p>
+            <ul>
+                <li>6-hour service</li>
+                <li>All deep clean services</li>
+                <li>Carpet deep cleaning</li>
+                <li>Organization services</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+    </div>
+</div>
+
+<div class="contact-section">
+    <h2>Ready to Get Started?</h2>
+    <p>Contact us today to schedule your house cleaning service</p>
+    <button class="btn-book">Contact Us</button>
+</div>
+{% endblock %}
+

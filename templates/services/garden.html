@@ -1,0 +1,76 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+
+<div class="service-hero" style="background-image: url('{{ url_for('static', filename='img/garden.jpg') }}')">
+    <div class="service-hero-content">
+        <h1>Garden Cleaning Services</h1>
+        <p>Transform your outdoor space into a pristine paradise with our professional garden cleaning and maintenance services.</p>
+    </div>
+</div>
+
+<div class="service-content">
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>Garden Maintenance</h3>
+            <p>Regular maintenance including lawn mowing, hedge trimming, and general garden tidying.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Seasonal Cleanup</h3>
+            <p>Thorough seasonal cleaning to prepare your garden for the changing weather conditions.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Green Waste Removal</h3>
+            <p>Environmentally responsible disposal of all garden waste and debris.</p>
+        </div>
+    </div>
+</div>
+
+<div class="pricing-section">
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <h3>Basic Garden Care</h3>
+            <div class="price">€60<span>/visit</span></div>
+            <p>Essential garden maintenance</p>
+            <ul>
+                <li>Lawn mowing</li>
+                <li>Edge trimming</li>
+                <li>Basic cleanup</li>
+                <li>Waste removal</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+        <div class="pricing-card">
+            <h3>Complete Garden Service</h3>
+            <div class="price">€120<span>/visit</span></div>
+            <p>Comprehensive garden care</p>
+            <ul>
+                <li>All basic services</li>
+                <li>Hedge trimming</li>
+                <li>Plant care</li>
+                <li>Fertilization</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+        <div class="pricing-card">
+            <h3>Premium Garden Package</h3>
+            <div class="price">€200<span>/visit</span></div>
+            <p>Complete garden transformation</p>
+            <ul>
+                <li>All complete services</li>
+                <li>Garden design consultation</li>
+                <li>Pest control</li>
+                <li>Seasonal planting</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+    </div>
+</div>
+
+<div class="contact-section">
+    <h2>Ready to Transform Your Garden?</h2>
+    <p>Contact us today to schedule your garden maintenance service</p>
+    <button class="btn-book">Contact Us</button>
+</div>
+{% endblock %}

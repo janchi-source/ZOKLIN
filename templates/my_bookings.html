@@ -1,0 +1,186 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+
+<div class="auth-container bookings-container">
+    <h2>{% if current_user.role == 'customer' %}My Bookings{% else %}Manage Bookings{% endif %}</h2>
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    {% if bookings %}
+        <div class="bookings-list">
+            {% for booking in bookings %}
+            <div class="booking-card">
+                <div class="booking-header">
+                    <h3>{{ booking.service_type.replace('_', ' ').title() }}</h3>
+                    <span class="booking-status {{ booking.status }}">{{ booking.status.title() }}</span>
+                </div>
+                
+                <div class="booking-details">
+                    {% if current_user.role == 'customer' %}
+                        <p><strong>Provider:</strong> {{ booking.provider.company_name }}</p>
+                    {% else %}
+                        <p><strong>Customer:</strong> {{ booking.customer.username }}</p>
+                    {% endif %}
+                    <p><strong>Date:</strong> {{ booking.booking_date.strftime('%Y-%m-%d %H:%M') }}</p>
+                    <p><strong>Price:</strong> €{{ booking.price }}</p>
+                    {% if booking.notes %}
+                        <p><strong>Notes:</strong> {{ booking.notes }}</p>
+                    {% endif %}
+                </div>
+                
+                {% if current_user.role == 'provider' and booking.status == 'pending' %}
+                <div class="booking-actions">
+                    <button class="btn-action confirm" onclick="updateBookingStatus({{ booking.id }}, 'confirmed')">Confirm</button>
+                    <button class="btn-action cancel" onclick="updateBookingStatus({{ booking.id }}, 'cancelled')">Cancel</button>
+                </div>
+                {% endif %}
+                
+                {% if current_user.role == 'provider' and booking.status == 'confirmed' %}
+                <div class="booking-actions">
+                    <button class="btn-action complete" onclick="updateBookingStatus({{ booking.id }}, 'completed')">Mark as Completed</button>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-bookings">No bookings found.</p>
+    {% endif %}
+</div>
+
+<style>
+.bookings-container {
+    max-width: 800px;
+}
+
+.booking-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.booking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.booking-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+.booking-status.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.booking-status.confirmed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.booking-status.completed {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.booking-status.cancelled {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.booking-details {
+    margin-bottom: 1rem;
+}
+
+.booking-details p {
+    margin-bottom: 0.5rem;
+}
+
+.booking-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-action {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-action.confirm {
+    background: #2e7d32;
+    color: white;
+}
+
+.btn-action.confirm:hover {
+    background: #1b5e20;
+}
+
+.btn-action.cancel {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-action.cancel:hover {
+    background: #c82333;
+}
+
+.btn-action.complete {
+    background: #007bff;
+    color: white;
+}
+
+.btn-action.complete:hover {
+    background: #0056b3;
+}
+
+.no-bookings {
+    text-align: center;
+    color: #666;
+    margin: 2rem 0;
+}
+</style>
+
+<script>
+function updateBookingStatus(bookingId, status) {
+    fetch(`/booking/${bookingId}/status`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: status })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
+        } else {
+            location.reload();
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while updating the booking status.');
+    });
+}
+</script>
+{% endblock %} 

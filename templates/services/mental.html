@@ -1,0 +1,76 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+
+<div class="service-hero" style="background-image: url('{{ url_for('static', filename='img/brain.jpg') }}')">
+    <div class="service-hero-content">
+        <h1>Mental Cleaning Services</h1>
+        <p>Declutter your mind and create mental clarity with our unique mental cleaning and organization services.</p>
+    </div>
+</div>
+
+<div class="service-content">
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>Mental Organization</h3>
+            <p>Professional guidance to help organize thoughts, goals, and daily routines.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Digital Declutter</h3>
+            <p>Assistance in organizing digital spaces, emails, and files for improved mental clarity.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Mindful Space Design</h3>
+            <p>Creating environments that promote mental wellness and productivity.</p>
+        </div>
+    </div>
+</div>
+
+<div class="pricing-section">
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <h3>Basic Mental Clean</h3>
+            <div class="price">€70<span>/session</span></div>
+            <p>Essential mental organization</p>
+            <ul>
+                <li>1-hour consultation</li>
+                <li>Basic organization plan</li>
+                <li>Digital cleanup guide</li>
+                <li>Weekly checklist</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+        <div class="pricing-card">
+            <h3>Deep Mental Clean</h3>
+            <div class="price">€140<span>/session</span></div>
+            <p>Comprehensive mental care</p>
+            <ul>
+                <li>2-hour session</li>
+                <li>Detailed action plan</li>
+                <li>Digital organization</li>
+                <li>Monthly follow-up</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+        <div class="pricing-card">
+            <h3>Premium Mental Package</h3>
+            <div class="price">€250<span>/month</span></div>
+            <p>Complete mental transformation</p>
+            <ul>
+                <li>Weekly sessions</li>
+                <li>Comprehensive planning</li>
+                <li>Space optimization</li>
+                <li>Ongoing support</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+    </div>
+</div>
+
+<div class="contact-section">
+    <h2>Ready to Clear Your Mind?</h2>
+    <p>Contact us today to begin your mental organization journey</p>
+    <button class="btn-book">Contact Us</button>
+</div>
+{% endblock %}

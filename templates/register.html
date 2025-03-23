@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<body>
+    <div class="container-log-reg">
+        <div class="article-preview">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                {{ form.username.label }} <br> {{ form.username() }} <br>
+                {{ form.email }} <br> {{ form.email() }} <br>
+                {{ form.password.label }} <br> {{ form.password() }} <br>
+                {{ form.password_confirm.label }} <br> {{ form.password_confirm() }} <br>
+                {{ form.submit() }}
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}

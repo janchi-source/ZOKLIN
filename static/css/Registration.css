@@ -1,0 +1,70 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.background {
+    background: url('scenic-background.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Registration Container */
+.registration-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: white;
+    font-size: 28px;
+}
+
+p {
+    color: white;
+}
+
+p a {
+    color: #ffd700; /* Gold color for links */
+}
+
+/* Input Fields */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: calc(100% - 40px);
+    padding: 10px;
+    padding-left: 40px;
+    border-radius: 25px;
+    border: none;
+}
+
+.input-group .icon {
+    position: absolute;
+    left: 15px;
+    top: calc(50% - 10px);
+}
+
+/* Button Styling */
+button {
+    background-image: linear-gradient(to right, #6a5acd, #836fff);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 12px;
+}
+button:hover {
+    transform: scale(0.9);
+}

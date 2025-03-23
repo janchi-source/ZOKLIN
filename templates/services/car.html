@@ -1,0 +1,76 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+
+<div class="service-hero" style="background-image: url('{{ url_for('static', filename='img/car.jpg') }}')">
+    <div class="service-hero-content">
+        <h1>Car Cleaning Services</h1>
+        <p>Professional car cleaning and detailing services to keep your vehicle looking showroom fresh.</p>
+    </div>
+</div>
+
+<div class="service-content">
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>Exterior Detailing</h3>
+            <p>Complete exterior cleaning, including paint protection and wheel detailing.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Interior Cleaning</h3>
+            <p>Deep cleaning of all interior surfaces, carpets, and upholstery.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Premium Waxing</h3>
+            <p>Professional waxing and paint protection for long-lasting shine.</p>
+        </div>
+    </div>
+</div>
+
+<div class="pricing-section">
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <h3>Basic Wash</h3>
+            <div class="price">€30<span>/wash</span></div>
+            <p>Essential car cleaning</p>
+            <ul>
+                <li>Exterior wash</li>
+                <li>Window cleaning</li>
+                <li>Tire cleaning</li>
+                <li>Basic vacuum</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+        <div class="pricing-card">
+            <h3>Full Detail</h3>
+            <div class="price">€80<span>/service</span></div>
+            <p>Comprehensive car care</p>
+            <ul>
+                <li>All basic services</li>
+                <li>Interior deep clean</li>
+                <li>Wax application</li>
+                <li>Leather treatment</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+        <div class="pricing-card">
+            <h3>Premium Detail</h3>
+            <div class="price">€150<span>/service</span></div>
+            <p>Ultimate car detailing</p>
+            <ul>
+                <li>All full detail services</li>
+                <li>Paint correction</li>
+                <li>Ceramic coating</li>
+                <li>Engine bay cleaning</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+    </div>
+</div>
+
+<div class="contact-section">
+    <h2>Ready for a Spotless Vehicle?</h2>
+    <p>Contact us today to schedule your car cleaning service</p>
+    <button class="btn-book">Contact Us</button>
+</div>
+{% endblock %}

@@ -2,7 +2,7 @@
 
 {% block content %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="home-page">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,26 +16,33 @@
             <div class="hero-text">
                 <p></p>
                 <h1>Cleaning<br>services</h1>
-                <button class="btn-green">Contact us</button>
+                <a href="{{ url_for('contact') }}" class="btn-green">Contact us</a>
             </div>
         </div>
     </section>
 
     <div class="search-bar">
-        <div class="search-container">
-            <select>
-                <option>All</option>
+        <form class="search-container" action="{{ url_for('search') }}" method="GET">
+            <select name="service_type">
+                <option value="all">All</option>
+                <option value="house">House Cleaning</option>
+                <option value="office">Office Cleaning</option>
+                <option value="garden">Garden Services</option>
+                <option value="car">Car Cleaning</option>
+                <option value="mental">Mental Cleaning</option>
             </select>
-            <input type="text" placeholder="I want to clean..." class="search-input">
-            <select>
-                <option>Bratislava</option>
-                <option>Pezinok</option>
+            <input type="text" name="query" placeholder="I want to clean..." class="search-input">
+            <select name="location">
+                <option value="bratislava">Bratislava</option>
+                <option value="pezinok">Pezinok</option>
             </select>
-            <select>
-                <option>Eur 500 - 1000</option>
+            <select name="price_range">
+                <option value="0-500">€0 - €500</option>
+                <option value="500-1000">€500 - €1000</option>
+                <option value="1000+">€1000+</option>
             </select>
-            <button class="search-btn">🔍</button>
-        </div>
+            <button type="submit" class="search-btn">🔍</button>
+        </form>
     </div>
 
     <section class="popular-searches">
@@ -52,26 +59,26 @@
         </div>
 
         <div class="categories">
-            <div class="category houses">
+            <a href="{{ url_for('house') }}" class="category houses">
                 <img src="../static/img/house.jpg" alt="Real Estate">
                 <h3>Houses</h3>
-            </div>
-            <div class="category garden">
+            </a>
+            <a href="{{ url_for('garden') }}" class="category garden">
                 <img src="../static/img/garden.jpg" alt="Beauty & Health">
                 <h3>Gardens</h3>
-            </div>
-            <div class="category office">
+            </a>
+            <a href="{{ url_for('office') }}" class="category office">
                 <img src="../static/img/office.jpg" alt="All for Home">
                 <h3>Offices</h3>
-            </div>
-            <div class="category cars">
+            </a>
+            <a href="{{ url_for('car') }}" class="category cars">
                 <img src="../static/img/car.jpg" alt="Cars & Motors">
                 <h3>Cars</h3>
-            </div>
-            <div class="category mental">
+            </a>
+            <a href="{{ url_for('mental') }}" class="category mental">
                 <img src="../static/img/brain.jpg" alt="Pets & Staff">
-                <h3>Menatal</h3>
-            </div>
+                <h3>Mental</h3>
+            </a>
         </div>
     </section>
 </body>

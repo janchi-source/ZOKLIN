@@ -1,0 +1,123 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+
+<div class="auth-container provider-profile">
+    <h2>Manage Your Provider Profile</h2>
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST" class="auth-form">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+            {{ form.company_name.label }}
+            {{ form.company_name(class="form-control") }}
+            {% if form.company_name.errors %}
+                {% for error in form.company_name.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.description.label }}
+            {{ form.description(class="form-control") }}
+            {% if form.description.errors %}
+                {% for error in form.description.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+            <small class="help-text">Describe your services, experience, and what makes you unique.</small>
+        </div>
+
+        <div class="form-group">
+            {{ form.services.label }}
+            {{ form.services(class="form-control") }}
+            {% if form.services.errors %}
+                {% for error in form.services.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+            <small class="help-text">Enter services separated by commas (e.g., House Cleaning, Office Cleaning)</small>
+        </div>
+
+        <div class="form-group">
+            {{ form.location.label }}
+            {{ form.location(class="form-control") }}
+            {% if form.location.errors %}
+                {% for error in form.location.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.price_from.label }}
+            {{ form.price_from(class="form-control") }}
+            {% if form.price_from.errors %}
+                {% for error in form.price_from.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.availability.label }}
+            {{ form.availability(class="form-control") }}
+            {% if form.availability.errors %}
+                {% for error in form.availability.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+            <small class="help-text">Enter your availability in JSON format (e.g., {"monday": "9:00-17:00", "tuesday": "9:00-17:00"})</small>
+        </div>
+
+        <div class="form-group">
+            {{ form.submit(class="btn-submit") }}
+        </div>
+    </form>
+
+    <div class="profile-actions">
+        <a href="{{ url_for('manage_offers') }}" class="btn-action">Manage Service Offers</a>
+        <a href="{{ url_for('provider_requests') }}" class="btn-action">View Customer Requests</a>
+    </div>
+</div>
+
+<style>
+.profile-actions {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-action {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-action:hover {
+    background-color: #218838;
+    color: white;
+    text-decoration: none;
+}
+</style>
+{% endblock %} 

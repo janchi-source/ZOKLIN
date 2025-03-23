@@ -83,6 +83,7 @@
 }
 
 .btn-green {
+    display: inline-block;
     background: #75C275;
     color: white;
     padding: 1rem 2rem;
@@ -90,6 +91,13 @@
     border: none;
     font-size: 1.1rem;
     cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-green:hover {
+    background: #63a663;
+    transform: translateY(-2px);
 }
 
 .search-bar {
@@ -172,6 +180,8 @@ select {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    text-decoration: none;
+    display: block;
 }
 
 .category img {
@@ -194,6 +204,11 @@ select {
     font-size: 1.125rem;
     margin-top: auto;
     z-index: 1;
+    text-decoration: none;
+}
+
+.category:hover h3 {
+    color: #ff9f1c;
 }
 
 .houses { background: #e6f0ff; }

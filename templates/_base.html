@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Base</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header class="header">
-        <div class="logo">Zoklin</div>
+        <a href="{{ url_for('home') }}" class="logo">Zoklin</a>
         <div class="header-right">
             <button class="btn btn-ghost">EN</button>
-            <button class="btn btn-ghost">Sign in</button>
-            <button class="btn btn-white">Contact us</button>
+            {% if current_user.is_authenticated %}
+                {% if current_user.role == 'provider' %}
+                    <a href="{{ url_for('provider_profile') }}" class="btn btn-ghost">Profile</a>
+                    <a href="{{ url_for('manage_offers') }}" class="btn btn-ghost">Offers</a>
+                    <a href="{{ url_for('provider_requests') }}" class="btn btn-ghost">Requests</a>
+                {% endif %}
+                <span class="user-info">{{ current_user.username }}</span>
+                {% if current_user.role == 'provider' %}
+                    <span class="provider-badge">Provider</span>
+                {% endif %}
+                <a href="{{ url_for('logout') }}" class="btn btn-ghost">Log out</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-ghost">Log in</a>
+                <a href="{{ url_for('register') }}" class="btn btn-white">Sign up</a>
+            {% endif %}
         </div>
     </header>
 
@@ -23,8 +37,6 @@
     </div>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2023 Your Company</p>
-    </footer>
+    {% include 'footer.html' %}
 </body>
 </html>

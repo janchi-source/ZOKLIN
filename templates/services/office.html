@@ -1,0 +1,76 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+
+<div class="service-hero" style="background-image: url('{{ url_for('static', filename='img/office.jpg') }}')">
+    <div class="service-hero-content">
+        <h1>Office Cleaning Services</h1>
+        <p>Create a clean, healthy, and productive workspace with our professional office cleaning services.</p>
+    </div>
+</div>
+
+<div class="service-content">
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>Daily Maintenance</h3>
+            <p>Regular cleaning services to maintain a professional and hygienic work environment.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Deep Cleaning</h3>
+            <p>Thorough cleaning of all office spaces, including carpets, windows, and hard-to-reach areas.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Sanitization Services</h3>
+            <p>Professional disinfection services to ensure a healthy workplace for your employees.</p>
+        </div>
+    </div>
+</div>
+
+<div class="pricing-section">
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <h3>Basic Office Clean</h3>
+            <div class="price">€100<span>/visit</span></div>
+            <p>Essential office cleaning</p>
+            <ul>
+                <li>Vacuuming</li>
+                <li>Dusting</li>
+                <li>Trash removal</li>
+                <li>Basic sanitization</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+        <div class="pricing-card">
+            <h3>Professional Clean</h3>
+            <div class="price">€200<span>/visit</span></div>
+            <p>Comprehensive office care</p>
+            <ul>
+                <li>All basic services</li>
+                <li>Window cleaning</li>
+                <li>Carpet cleaning</li>
+                <li>Kitchen cleaning</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+        <div class="pricing-card">
+            <h3>Premium Office Package</h3>
+            <div class="price">€350<span>/visit</span></div>
+            <p>Complete office maintenance</p>
+            <ul>
+                <li>All professional services</li>
+                <li>Deep sanitization</li>
+                <li>Floor waxing</li>
+                <li>24/7 availability</li>
+            </ul>
+            <button class="btn-book">Book Now</button>
+        </div>
+    </div>
+</div>
+
+<div class="contact-section">
+    <h2>Ready to Upgrade Your Office Cleaning?</h2>
+    <p>Contact us today to schedule your office cleaning service</p>
+    <button class="btn-book">Contact Us</button>
+</div>
+{% endblock %} 

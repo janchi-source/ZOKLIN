@@ -1,6 +1,68 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<h1>Welcome to the Home Page</h1>
-<p>This is the home page content.</p>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+
+<div class="page-container">
+    <div class="page-header">
+        <h1>About Zoklin</h1>
+        <p>Your trusted partner in professional cleaning services. We connect customers with verified cleaning experts to make your space shine.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Our Mission</h2>
+        <p>At Zoklin, we believe that a clean environment is essential for a healthy and productive life. Our mission is to make professional cleaning services accessible to everyone while providing opportunities for skilled cleaning professionals to grow their business.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Why Choose Zoklin?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Verified Professionals</h3>
+                <p>All our service providers undergo thorough verification to ensure quality and reliability.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Wide Range of Services</h3>
+                <p>From house cleaning to specialized services like mental cleaning, we've got all your needs covered.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Flexible Booking</h3>
+                <p>Easy online booking system with flexible scheduling to fit your busy lifestyle.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Quality Guarantee</h3>
+                <p>We stand behind our service providers with a satisfaction guarantee on every booking.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Our Services</h2>
+        <p>We offer a comprehensive range of cleaning services to meet all your needs:</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>House Cleaning</h3>
+                <p>Professional home cleaning services for a spotless living space.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Office Cleaning</h3>
+                <p>Keep your workplace clean and productive with our commercial cleaning services.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Garden Services</h3>
+                <p>Maintain your outdoor spaces with our expert gardening services.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Mental Cleaning</h3>
+                <p>Unique services to help declutter your mind and organize your life.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>Ready to Experience the Zoklin Difference?</h2>
+        <p>Find the perfect cleaning professional for your needs today.</p>
+        <a href="{{ url_for('search') }}" class="btn-cta">Find a Cleaner</a>
+    </div>
+</div>
 {% endblock %}

@@ -1,0 +1,83 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+
+<div class="auth-container booking-container">
+    <h2>Book Service with {{ provider.company_name }}</h2>
+    
+    <div class="provider-summary">
+        <p class="provider-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-number">{{ provider.rating }}</span>
+            <span class="review-count">({{ provider.reviews_count }} reviews)</span>
+        </p>
+        <p class="price-info">Starting from €{{ provider.price_from }}</p>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST" class="auth-form">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+            {{ form.service_type.label }}
+            {{ form.service_type(class="form-control") }}
+            {% if form.service_type.errors %}
+                {% for error in form.service_type.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.booking_date.label }}
+            {{ form.booking_date(class="form-control", type="datetime-local", required=True) }}
+            {% if form.booking_date.errors %}
+                {% for error in form.booking_date.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.notes.label }}
+            {{ form.notes(class="form-control") }}
+            {% if form.notes.errors %}
+                {% for error in form.notes.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.submit(class="btn-submit") }}
+        </div>
+    </form>
+</div>
+
+<script>
+// Set min date to today and format the input
+document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date();
+    const dateTimeInput = document.querySelector('input[type="datetime-local"]');
+    
+    // Set minimum date to today
+    today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+    dateTimeInput.min = today.toISOString().slice(0,16);
+    
+    // Set default value to tomorrow at current time
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    dateTimeInput.value = tomorrow.toISOString().slice(0,16);
+});
+</script>
+{% endblock %} 

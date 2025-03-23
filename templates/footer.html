@@ -1,0 +1,62 @@
+{% block footer %}
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About Zoklin</h3>
+            <p>Your trusted partner in professional cleaning services. We connect customers with verified cleaning experts.</p>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('search') }}">Find Services</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="{{ url_for('house') }}">House Cleaning</a></li>
+                <li><a href="{{ url_for('office') }}">Office Cleaning</a></li>
+                <li><a href="{{ url_for('garden') }}">Garden Services</a></li>
+                <li><a href="{{ url_for('car') }}">Car Cleaning</a></li>
+                <li><a href="{{ url_for('mental') }}">Mental Cleaning</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Connect With Us</h3>
+            <div class="social-links">
+                <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran" target="_blank" class="social-link">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran" target="_blank" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; {{ now.year }} Zoklin. All rights reserved.</p>
+        <div class="footer-legal">
+            <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a>
+            <a href="{{ url_for('terms_of_service') }}">Terms of Service</a>
+            <a href="{{ url_for('cookie_policy') }}">Cookie Policy</a>
+        </div>
+    </div>
+</footer>
+{% endblock %} 
